@@ -1,5 +1,5 @@
 {
-    "name": "PlayerActions",
+    "name": "InputActionsMap",
     "maps": [
         {
             "name": "Player",
@@ -9,6 +9,15 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "bda59ba8-4b4d-4e15-a86e-835b0f5402b6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dodge",
+                    "type": "Button",
+                    "id": "eff42d93-12e1-4a5b-a830-954e5619e8b4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -35,6 +44,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cff8125c-af56-43e3-81f0-7f06075f6b74",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f8f2240-1dbc-425a-a295-ab95f221abca",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
