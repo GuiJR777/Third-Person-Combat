@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StateMachine : MonoBehaviour
+public abstract class StateMachine
 {
     private State _currentState;
 
-    private void Update()
+    public void Tick(float delta)
     {
-        _currentState?.Tick(Time.deltaTime);
+        _currentState?.Tick(delta);
     }
 
-    private void FixedUpdate()
+    public void PhysicsTick(float fixedDelta)
     {
-        _currentState?.PhysicsTick(Time.fixedDeltaTime);
+        _currentState?.PhysicsTick(fixedDelta);
     }
 
     public void SwitchState(State newState)
     {
+        if ( _currentState == newState ){ return; }
+
         _currentState?.Exit();
         _currentState = newState;
         _currentState?.Enter();

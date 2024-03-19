@@ -4,5 +4,22 @@ using UnityEngine;
 
 public class PlayerStateMachine : StateMachine
 {
-   [field: SerializeField] public InputReader InputReader { get; private set; }
+   public PlayerController PlayerController {get; private set;}
+
+   public PlayerBaseState idleState;
+
+    public PlayerStateMachine(PlayerController playerController)
+    {
+      PlayerController = playerController;
+    }
+
+    public void Awake()
+   {
+      idleState = new IdleState(this);
+   }
+
+   public void Start()
+   {
+      SwitchState(idleState);
+   }
 }
