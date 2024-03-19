@@ -23,7 +23,7 @@ public class FreeLookMoveState : PlayerGroundedState
     private void SprintHandler()
     {
         // TODO: Refactor to use InputReader
-        float baseSpeed = stateMachine.PlayerController.Data.MovementData.FreeLookSpeed;
+        float baseSpeed = stateMachine.PlayerController.Data.MovementData.BaseSpeed;
 
         if (Input.GetKey(KeyCode.LeftShift))
         {

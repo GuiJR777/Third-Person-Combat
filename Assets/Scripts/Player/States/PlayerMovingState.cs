@@ -171,7 +171,7 @@ public class PlayerMovingState : PlayerBaseState
 
     protected void SetBaseSpeed()
     {
-        stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = stateMachine.PlayerController.Data.MovementData.FreeLookSpeed;
+        stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = stateMachine.PlayerController.Data.MovementData.BaseSpeed;
     }
 
     protected void ResetVelocity()
@@ -199,7 +199,7 @@ public class PlayerMovingState : PlayerBaseState
 
     protected float GetMovementSpeed()
     {
-        float baseMaxSpeed = stateMachine.PlayerController.Data.MovementData.FreeLookSpeed;
+        float baseMaxSpeed = stateMachine.PlayerController.Data.MovementData.BaseSpeed;
         float currentMaxSpeed = stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed;
         return currentMaxSpeed / baseMaxSpeed * GetMovementDirection().magnitude;
     }
