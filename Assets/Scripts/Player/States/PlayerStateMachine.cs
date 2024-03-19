@@ -7,6 +7,7 @@ public class PlayerStateMachine : StateMachine
    public PlayerController PlayerController {get; private set;}
 
    public PlayerBaseState idleState;
+   public PlayerBaseState walkState;
 
     public PlayerStateMachine(PlayerController playerController)
     {
@@ -15,7 +16,8 @@ public class PlayerStateMachine : StateMachine
 
     public void Awake()
    {
-      idleState = new IdleState(this);
+      idleState = new IdleState("Idle", this);
+      walkState = new WalkState("Walk", this);
    }
 
    public void Start()

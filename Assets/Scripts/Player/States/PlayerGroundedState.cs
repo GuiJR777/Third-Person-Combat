@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerGroundedState : PlayerMovingState
 {
-    public PlayerGroundedState(PlayerStateMachine stateMachine) : base(stateMachine)
+    public PlayerGroundedState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
     {
     }
 
@@ -23,6 +23,8 @@ public class PlayerGroundedState : PlayerMovingState
             stateMachine.SwitchState(stateMachine.idleState);
             return;
         }
+
+        stateMachine.SwitchState(stateMachine.walkState);
 
 
     }

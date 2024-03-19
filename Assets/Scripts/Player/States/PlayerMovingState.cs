@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerMovingState : PlayerBaseState
 {
-    public PlayerMovingState(PlayerStateMachine stateMachine) : base(stateMachine)
+
+    public PlayerMovingState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
     {
     }
 
     public override void Enter()
     {
+        StartAnimation();
         SetBaseRotationData();
     }
 
@@ -24,6 +26,17 @@ public class PlayerMovingState : PlayerBaseState
 
     public override void Exit()
     {
+        FinishAnimation();
+    }
+
+    private void StartAnimation()
+    {
+        stateMachine.PlayerController.Animator.SetBool(Name, true);
+    }
+
+    private void FinishAnimation()
+    {
+        stateMachine.PlayerController.Animator.SetBool(Name, false);
     }
 
     protected void GetMovementInput()

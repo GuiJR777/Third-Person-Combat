@@ -2,14 +2,8 @@ using UnityEngine;
 
 public class IdleState : PlayerGroundedState
 {
-    public IdleState(PlayerStateMachine stateMachine) : base(stateMachine)
+    public IdleState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
     {
-    }
-
-    public override void Enter()
-    {
-        base.Enter();
-        Debug.Log("Enter Idle State");
     }
 
     public override void PhysicsTick(float fixedDeltaTime)

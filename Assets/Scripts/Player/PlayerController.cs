@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerStateMachine stateMachine;
 
+    public Animator Animator;
     public Transform cameraTransform { get; private set; }
     public Rigidbody Body;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform;
         stateMachine = new PlayerStateMachine(this);
         stateMachine.Awake();
+        Animator = GetComponent<Animator>();
     }
 
     private void Start()
