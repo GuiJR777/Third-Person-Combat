@@ -12,6 +12,7 @@ public class PlayerReusableData
     private Vector3 _timeToReachTargetRotation;
     private Vector3 _dampedTargetRotationCurrentVelocity;
     private Vector3 _dampedTargetRotationPassedTime;
+    private float _currentMaxSpeed;
 
     public ref Vector3 currentTargetRotation
     {
@@ -42,6 +43,14 @@ public class PlayerReusableData
         get
         {
             return ref _dampedTargetRotationPassedTime;
+        }
+    }
+
+    public ref float currentMaxSpeed
+    {
+        get
+        {
+            return ref _currentMaxSpeed;
         }
     }
 

@@ -10,6 +10,7 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
     public Vector2 MovementValue {get; private set;}
     public event Action Jump;
     public event Action Dodge;
+    public event Action Sprint;
 
     private InputActionsMap _inputAction;
 
@@ -45,5 +46,12 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
     public void OnMove(InputAction.CallbackContext context)
     {
         MovementValue = context.ReadValue<Vector2>();
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        Sprint?.Invoke();
     }
 }

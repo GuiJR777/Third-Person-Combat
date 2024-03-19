@@ -24,7 +24,7 @@ public class PlayerGroundedState : PlayerMovingState
             return;
         }
 
-        stateMachine.SwitchState(stateMachine.walkState);
+        stateMachine.SwitchState(stateMachine.freeLookMoveState);
 
 
     }

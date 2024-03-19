@@ -12,6 +12,7 @@ public class PlayerMovingState : PlayerBaseState
     public override void Enter()
     {
         StartAnimation();
+        SetBaseSpeed();
         SetBaseRotationData();
     }
 
@@ -54,7 +55,7 @@ public class PlayerMovingState : PlayerBaseState
         Vector3 movementDirection = GetMovementDirection();
         float targetRotationYAngle = Rotate(movementDirection);
         Vector3 targetRotationDirection = GetTargetRotationDirection(targetRotationYAngle);
-        float movementSpeed = stateMachine.PlayerController.Data.MovementData.FreeLookSpeed;
+        float movementSpeed = stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed;
         Vector3 currentPlayerHorizontalVelocity = GetPlayerHorizontalVelocity();
         Vector3 desiredForce = targetRotationDirection * movementSpeed - currentPlayerHorizontalVelocity;
 
@@ -168,6 +169,11 @@ public class PlayerMovingState : PlayerBaseState
         stateMachine.PlayerController.Data.ReusableData.timeToReachTargetRotation = stateMachine.PlayerController.Data.MovementData.targetRotationReachTime;
     }
 
+    protected void SetBaseSpeed()
+    {
+        stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = stateMachine.PlayerController.Data.MovementData.FreeLookSpeed;
+    }
+
     protected void ResetVelocity()
     {
         stateMachine.PlayerController.Body.velocity = Vector3.zero;
@@ -189,5 +195,12 @@ public class PlayerMovingState : PlayerBaseState
         Vector2 playerHorizontalMovement = new Vector2(playerMovement.x, playerMovement.z);
 
         return playerHorizontalMovement.magnitude > threshold;
+    }
+
+    protected float GetMovementSpeed()
+    {
+        float baseMaxSpeed = stateMachine.PlayerController.Data.MovementData.FreeLookSpeed;
+        float currentMaxSpeed = stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed;
+        return currentMaxSpeed / baseMaxSpeed * GetMovementDirection().magnitude;
     }
 }
