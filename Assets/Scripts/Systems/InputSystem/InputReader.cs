@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -53,5 +51,9 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
         if (!context.performed) return;
 
         Sprint?.Invoke();
+    }
+
+    public void OnLook(InputAction.CallbackContext context)
+    {
     }
 }

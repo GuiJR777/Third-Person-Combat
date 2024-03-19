@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   <MovementData>k__BackingField:
-    FreeLookSpeed: 3
+    BaseSpeed: 4
     targetRotationReachTime: {x: 0, y: 0.2, z: 0}
