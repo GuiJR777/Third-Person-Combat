@@ -3,7 +3,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [field: SerializeField] public InputReader InputReader {get; private set;}
+
+    [field: Header("References")]
     [field: SerializeField] public PlayerSO Data {get; private set;}
+
+    [field: Header("Collisions")]
+    [field: SerializeField] public CapsuleColliderHandler capsuleColliderHandler { get; private set; }
+
+    [field: Header("Layers")]
+    [field: SerializeField] public PlayerLayerData layerData { get; private set; }
 
     private PlayerStateMachine stateMachine;
 
@@ -14,9 +22,17 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         cameraTransform = Camera.main.transform;
+        Animator = GetComponent<Animator>();
         stateMachine = new PlayerStateMachine(this);
         stateMachine.Awake();
-        Animator = GetComponent<Animator>();
+        capsuleColliderHandler.Initialize(gameObject);
+        capsuleColliderHandler.CalculateCapsuleColliderDimensions();
+    }
+
+    void OnValidate()
+    {
+        capsuleColliderHandler.Initialize(gameObject);
+        capsuleColliderHandler.CalculateCapsuleColliderDimensions();
     }
 
     private void Start()

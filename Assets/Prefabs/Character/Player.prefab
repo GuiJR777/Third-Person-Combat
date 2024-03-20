@@ -1890,6 +1890,11 @@ MonoBehaviour:
   <InputReader>k__BackingField: {fileID: 1935207745363661594}
   <Data>k__BackingField: {fileID: 11400000, guid: aa32a7299da774435aa11576f7a37137,
     type: 2}
+  <capsuleColliderHandler>k__BackingField: {fileID: 0}
+  <layerData>k__BackingField:
+    <groundLayer>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 0
   Animator: {fileID: 0}
   Body: {fileID: 6611208287656790743}
 --- !u!54 &6611208287656790743
@@ -1938,10 +1943,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.27388978
-  m_Height: 1.8447222
+  m_Radius: 0.25
+  m_Height: 1.84
   m_Direction: 1
-  m_Center: {x: -0.0038976073, y: 0.9262288, z: -0.019488305}
+  m_Center: {x: 0, y: 0.92, z: 0}
 --- !u!1 &5703348466282965180
 GameObject:
   m_ObjectHideFlags: 0
