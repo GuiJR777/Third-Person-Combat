@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FreeLookMoveState : PlayerGroundedState
 {
-    private const string SpeedVariableName = "FreeLookMoveSpeed";
+    private readonly int SpeedVariableHash = Animator.StringToHash("FreeLookMoveSpeed");
     public FreeLookMoveState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
     {
     }
@@ -12,7 +12,7 @@ public class FreeLookMoveState : PlayerGroundedState
         base.PhysicsTick(fixedDeltaTime);
 
         Move();
-        stateMachine.PlayerController.Animator.SetFloat(SpeedVariableName, GetMovementSpeed());
+        stateMachine.PlayerController.Animator.SetFloat(SpeedVariableHash, GetMovementSpeed());
     }
 
     public override void Tick(float deltaTime)
