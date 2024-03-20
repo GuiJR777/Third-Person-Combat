@@ -30,7 +30,6 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
         if (!context.performed) return;
 
         Jump?.Invoke();
-        Debug.Log("Jump");
     }
 
     public void OnDodge(InputAction.CallbackContext context)
@@ -38,7 +37,6 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
         if (!context.performed) return;
 
         Dodge?.Invoke();
-        Debug.Log("Dodge");
     }
 
     public void OnMove(InputAction.CallbackContext context)
