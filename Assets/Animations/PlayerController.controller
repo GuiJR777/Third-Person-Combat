@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: SwordEquipped
+    m_ConditionEvent: IsKatanaDrawn
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Idle
@@ -178,7 +178,7 @@ AnimatorController:
   m_Name: PlayerController
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: SwordEquipped
+  - m_Name: IsKatanaDrawn
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -278,7 +278,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: SwordEquipped
+    m_ConditionEvent: IsKatanaDrawn
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: Idle
@@ -306,7 +306,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: SwordEquipped
+    m_ConditionEvent: IsKatanaDrawn
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3801130126640515209}
@@ -378,7 +378,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: SwordEquipped
+    m_ConditionEvent: IsKatanaDrawn
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2954778684301161808}

@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerGroundedState : PlayerMovingState
 {
     private SlopeData slopeData;
+
     public PlayerGroundedState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
     {
         slopeData = stateMachine.PlayerController.capsuleColliderHandler.slopeData;

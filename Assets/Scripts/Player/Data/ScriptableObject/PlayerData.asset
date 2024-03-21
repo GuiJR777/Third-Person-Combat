@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   <MovementData>k__BackingField:
-    BaseSpeed: 4
-    DecelerationSpeed: 6
+    BaseSpeed: 6
+    DecelerationSpeed: 8
     targetRotationReachTime: {x: 0, y: 0.2, z: 0}
     <slopeSpeedAngles>k__BackingField:
       serializedVersion: 2
