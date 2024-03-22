@@ -13,6 +13,8 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
     public event Action LockOnTarget;
     public event Action CancelLockTarget;
 
+    public event Action DrawOrSheat;
+
     private InputActionsMap _inputAction;
 
     private void Start()
@@ -76,5 +78,12 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
         if (!context.performed) return;
 
         CancelLockTarget?.Invoke();
+    }
+
+    public void OnDrawOrSheatKatana(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        DrawOrSheat?.Invoke();
     }
 }

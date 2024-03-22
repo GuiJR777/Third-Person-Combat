@@ -14,6 +14,7 @@ public class PlayerReusableData
     private Vector3 _dampedTargetRotationPassedTime;
     private float _currentMaxSpeed;
     private float _currentSlopeModifier;
+    private bool _isKatanaDrawn;
 
     public ref Vector3 currentTargetRotation
     {
@@ -60,6 +61,14 @@ public class PlayerReusableData
         get
         {
             return ref _currentSlopeModifier;
+        }
+    }
+
+    public ref bool isKatanaDrawn
+    {
+        get
+        {
+            return ref _isKatanaDrawn;
         }
     }
 

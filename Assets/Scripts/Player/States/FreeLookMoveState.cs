@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FreeLookMoveState : PlayerGroundedState
+public class FreeLookMoveState : FreeLookState
 {
     private readonly int SpeedVariableHash = Animator.StringToHash("FreeLookMoveSpeed");
     public FreeLookMoveState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)

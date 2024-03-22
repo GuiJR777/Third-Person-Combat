@@ -6,8 +6,11 @@ public class PlayerStateMachine : StateMachine
 {
    public PlayerController PlayerController {get; private set;}
 
-   public PlayerBaseState idleState;
+   public PlayerBaseState freeLookState;
+   public PlayerBaseState targetLockState;
+   public PlayerBaseState freeLookIdleState;
    public PlayerBaseState freeLookMoveState;
+   public PlayerBaseState targetLockIdleState;
 
     public PlayerStateMachine(PlayerController playerController)
     {
@@ -16,12 +19,15 @@ public class PlayerStateMachine : StateMachine
 
     public void Awake()
    {
-      idleState = new IdleState("Idle", this);
+      freeLookState = new FreeLookState("FreeLookState", this);
+      targetLockState = new TargetLockState("TargetLockState", this);
+      freeLookIdleState = new FreeLookIdleState("FreeLookIdle", this);
       freeLookMoveState = new FreeLookMoveState("FreeLookMove", this);
+      targetLockIdleState = new TargetLockIdleState("TargetLockIdle", this);
    }
 
    public void Start()
    {
-      SwitchState(idleState);
+      SwitchState(freeLookState);
    }
 }

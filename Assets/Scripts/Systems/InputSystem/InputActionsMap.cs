@@ -89,6 +89,15 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DrawOrSheatKatana"",
+                    ""type"": ""Button"",
+                    ""id"": ""4f94c534-ea5f-4e95-9e38-1d88c008cb38"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,28 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
                     ""action"": ""CancelLockTarget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b72a0974-23a5-4c03-9e2f-4803cc33d50f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""DrawOrSheatKatana"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a7ce05f-850a-4a8e-a0e2-5afb41bf030e"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DrawOrSheatKatana"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -376,6 +407,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_LockOnTarget = m_Player.FindAction("LockOnTarget", throwIfNotFound: true);
         m_Player_CancelLockTarget = m_Player.FindAction("CancelLockTarget", throwIfNotFound: true);
+        m_Player_DrawOrSheatKatana = m_Player.FindAction("DrawOrSheatKatana", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -444,6 +476,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_LockOnTarget;
     private readonly InputAction m_Player_CancelLockTarget;
+    private readonly InputAction m_Player_DrawOrSheatKatana;
     public struct PlayerActions
     {
         private @InputActionsMap m_Wrapper;
@@ -455,6 +488,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @LockOnTarget => m_Wrapper.m_Player_LockOnTarget;
         public InputAction @CancelLockTarget => m_Wrapper.m_Player_CancelLockTarget;
+        public InputAction @DrawOrSheatKatana => m_Wrapper.m_Player_DrawOrSheatKatana;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -485,6 +519,9 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
             @CancelLockTarget.started += instance.OnCancelLockTarget;
             @CancelLockTarget.performed += instance.OnCancelLockTarget;
             @CancelLockTarget.canceled += instance.OnCancelLockTarget;
+            @DrawOrSheatKatana.started += instance.OnDrawOrSheatKatana;
+            @DrawOrSheatKatana.performed += instance.OnDrawOrSheatKatana;
+            @DrawOrSheatKatana.canceled += instance.OnDrawOrSheatKatana;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -510,6 +547,9 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
             @CancelLockTarget.started -= instance.OnCancelLockTarget;
             @CancelLockTarget.performed -= instance.OnCancelLockTarget;
             @CancelLockTarget.canceled -= instance.OnCancelLockTarget;
+            @DrawOrSheatKatana.started -= instance.OnDrawOrSheatKatana;
+            @DrawOrSheatKatana.performed -= instance.OnDrawOrSheatKatana;
+            @DrawOrSheatKatana.canceled -= instance.OnDrawOrSheatKatana;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -554,5 +594,6 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnLockOnTarget(InputAction.CallbackContext context);
         void OnCancelLockTarget(InputAction.CallbackContext context);
+        void OnDrawOrSheatKatana(InputAction.CallbackContext context);
     }
 }

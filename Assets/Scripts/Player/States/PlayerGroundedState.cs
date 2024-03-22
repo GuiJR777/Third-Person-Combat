@@ -9,12 +9,10 @@ public class PlayerGroundedState : PlayerMovingState
         slopeData = stateMachine.PlayerController.capsuleColliderHandler.slopeData;
     }
 
-    public override void Tick(float deltaTime)
+    public override void Enter()
     {
-        base.Tick(deltaTime);
-        GetMovementInput();
-        StatesHandler();
-        Debug.Log(stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed);
+        base.Enter();
+        stateMachine.PlayerController.InputReader.DrawOrSheat += OnDrawOrSheatKatana;
     }
 
     public override void PhysicsTick(float fixedDeltaTime)
@@ -23,15 +21,10 @@ public class PlayerGroundedState : PlayerMovingState
         FloatCapsuleCollider();
     }
 
-    private void StatesHandler()
+    public override void Exit()
     {
-        if (stateMachine.PlayerController.InputReader.MovementValue == Vector2.zero)
-        {
-            stateMachine.SwitchState(stateMachine.idleState);
-            return;
-        }
-
-        stateMachine.SwitchState(stateMachine.freeLookMoveState);
+        base.Exit();
+        stateMachine.PlayerController.InputReader.DrawOrSheat -= OnDrawOrSheatKatana;
     }
 
     private void FloatCapsuleCollider()
@@ -73,6 +66,13 @@ public class PlayerGroundedState : PlayerMovingState
         stateMachine.PlayerController.Data.ReusableData.currentSlopeModifier = slopeSpeedModifier;
 
         return slopeSpeedModifier;
+    }
+
+    private void OnDrawOrSheatKatana()
+    {
+        bool isKatanaDrawn = stateMachine.PlayerController.Data.ReusableData.isKatanaDrawn;
+        stateMachine.PlayerController.Data.ReusableData.isKatanaDrawn = !isKatanaDrawn;
+        stateMachine.PlayerController.Animator.SetBool("IsKatanaDrawn", !isKatanaDrawn);
     }
 
 
