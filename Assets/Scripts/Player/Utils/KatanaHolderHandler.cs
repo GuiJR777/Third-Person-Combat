@@ -7,21 +7,17 @@ public class KatanaHolderHandler : MonoBehaviour
     [SerializeField] private GameObject katanaInHand;
     [SerializeField] private GameObject katanaOnSheath;
 
-    private bool isKatanaDrawn = false;
+    private PlayerController playerController;
+
+    private void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
 
     public void DrawOrSheathKatana()
     {
-        if (isKatanaDrawn)
-        {
-            katanaInHand.SetActive(false);
-            katanaOnSheath.SetActive(true);
-            isKatanaDrawn = false;
-        }
-        else
-        {
-            katanaInHand.SetActive(true);
-            katanaOnSheath.SetActive(false);
-            isKatanaDrawn = true;
-        }
+        bool isKatanaDrawn = playerController.Data.AnimationData.IsKatanaDrawn;
+        katanaInHand.SetActive(isKatanaDrawn);
+        katanaOnSheath.SetActive(!isKatanaDrawn);
     }
 }
