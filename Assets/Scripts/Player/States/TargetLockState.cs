@@ -10,6 +10,7 @@ public class TargetLockState : PlayerGroundedState
     {
         base.Enter();
         stateMachine.PlayerController.Data.AnimationData.SetIsLockOnTarget(true);
+        stateMachine.PlayerController.Data.AnimationData.SetIsKatanaDrawn(true);
         stateMachine.PlayerController.InputReader.CancelLockTarget += OnCancelTarget;
     }
 
@@ -28,21 +29,35 @@ public class TargetLockState : PlayerGroundedState
 
     private void StatesHandler()
     {
+        if (!stateMachine.PlayerController.Targeter.SelectTarget())
+        {
+            OnCancelTarget();
+            return;
+        }
+
+        if (!stateMachine.PlayerController.Data.AnimationData.IsKatanaDrawn)
+        {
+            OnCancelTarget();
+            return;
+        }
+
         bool isMoving = stateMachine.PlayerController.InputReader.MovementValue != Vector2.zero;
 
         if (isMoving)
         {
             // TODO: Change to targetLockMoveState
+            Debug.Log("Target Lock Move");
             return;
         }
 
-        stateMachine.SwitchState(stateMachine.targetLockIdleState);
+        // TODO: Change to targetLockIdleState
+        Debug.Log("Target Lock Idle");
 
     }
 
     private void OnCancelTarget()
     {
-        // TODO: This method is called automatic if target out of range
-        // TODO: Change to LookFreeState
+        stateMachine.PlayerController.Targeter.Cancel();
+        stateMachine.SwitchState(stateMachine.freeLookState);
     }
 }

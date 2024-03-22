@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Targeter : MonoBehaviour
 {
-    public List<Target> targets = new List<Target>();
+    private List<Target> targets = new List<Target>();
+
+    public Target currentTarget {get; private set;}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,6 +22,20 @@ public class Targeter : MonoBehaviour
         {
             targets.Remove(target);
         }
+    }
+
+    public bool SelectTarget()
+    {
+        if (targets.Count == 0) return false;
+
+        currentTarget = targets[0];
+
+        return true;
+    }
+
+    public void Cancel()
+    {
+        currentTarget = null;
     }
 
 }

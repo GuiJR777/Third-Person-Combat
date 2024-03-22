@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     [field: Header("Layers")]
     [field: SerializeField] public PlayerLayerData layerData { get; private set; }
+    [field: SerializeField] public Targeter Targeter;
 
     private PlayerStateMachine stateMachine;
     public FeetGrounder FeetGrounder;

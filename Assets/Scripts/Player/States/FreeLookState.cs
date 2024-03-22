@@ -40,8 +40,9 @@ public class FreeLookState : PlayerGroundedState
     }
     private void OnLockTarget()
     {
-        // TODO: Check if is target available
-        // TODO: Change to TargetLockState
+        if (!stateMachine.PlayerController.Targeter.SelectTarget()) return;
+
+        stateMachine.SwitchState(stateMachine.targetLockState);
     }
 
 }
