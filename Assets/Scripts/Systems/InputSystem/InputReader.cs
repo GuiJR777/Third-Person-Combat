@@ -9,6 +9,9 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
     public event Action Jump;
     public event Action Dodge;
     public event Action Sprint;
+    public event Action SprintCanceled;
+    public event Action LockOnTarget;
+    public event Action CancelLockTarget;
 
     private InputActionsMap _inputAction;
 
@@ -46,12 +49,32 @@ public class InputReader : MonoBehaviour, InputActionsMap.IPlayerActions
 
     public void OnSprint(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        if (context.performed)
+        {
+            Sprint?.Invoke();
+        }
 
-        Sprint?.Invoke();
+        if (context.canceled)
+        {
+            SprintCanceled?.Invoke();
+        }
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
+    }
+
+    public void OnLockOnTarget(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        LockOnTarget?.Invoke();
+    }
+
+    public void OnCancelLockTarget(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        CancelLockTarget?.Invoke();
     }
 }

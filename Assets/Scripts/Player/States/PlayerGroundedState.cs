@@ -14,6 +14,7 @@ public class PlayerGroundedState : PlayerMovingState
         base.Tick(deltaTime);
         GetMovementInput();
         StatesHandler();
+        Debug.Log(stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed);
     }
 
     public override void PhysicsTick(float fixedDeltaTime)
@@ -69,7 +70,7 @@ public class PlayerGroundedState : PlayerMovingState
     {
         float slopeSpeedModifier = stateMachine.PlayerController.Data.MovementData.slopeSpeedAngles.Evaluate(angle);
 
-        stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed *= slopeSpeedModifier;
+        stateMachine.PlayerController.Data.ReusableData.currentSlopeModifier = slopeSpeedModifier;
 
         return slopeSpeedModifier;
     }

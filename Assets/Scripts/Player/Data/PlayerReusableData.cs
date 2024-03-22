@@ -13,6 +13,7 @@ public class PlayerReusableData
     private Vector3 _dampedTargetRotationCurrentVelocity;
     private Vector3 _dampedTargetRotationPassedTime;
     private float _currentMaxSpeed;
+    private float _currentSlopeModifier;
 
     public ref Vector3 currentTargetRotation
     {
@@ -51,6 +52,14 @@ public class PlayerReusableData
         get
         {
             return ref _currentMaxSpeed;
+        }
+    }
+
+    public ref float currentSlopeModifier
+    {
+        get
+        {
+            return ref _currentSlopeModifier;
         }
     }
 

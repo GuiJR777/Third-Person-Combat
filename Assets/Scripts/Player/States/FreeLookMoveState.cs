@@ -7,6 +7,14 @@ public class FreeLookMoveState : PlayerGroundedState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+        stateMachine.PlayerController.InputReader.Sprint += OnSprint;
+        stateMachine.PlayerController.InputReader.SprintCanceled += OnSprintCanceled;
+    }
+
+
     public override void PhysicsTick(float fixedDeltaTime)
     {
         base.PhysicsTick(fixedDeltaTime);
@@ -15,23 +23,28 @@ public class FreeLookMoveState : PlayerGroundedState
         stateMachine.PlayerController.Animator.SetFloat(SpeedVariableHash, GetMovementSpeed());
     }
 
-    public override void Tick(float deltaTime)
+    public override void Exit()
     {
-        base.Tick(deltaTime);
-        SprintHandler();
+        base.Exit();
+        stateMachine.PlayerController.InputReader.Sprint -= OnSprint;
+        stateMachine.PlayerController.InputReader.SprintCanceled -= OnSprintCanceled;
     }
 
-    private void SprintHandler()
+    private void OnSprint()
     {
-        // TODO: Refactor to use InputReader
+        float baseSpeed = stateMachine.PlayerController.Data.MovementData.BaseSpeed;
+        stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = baseSpeed * 2;
+    }
+
+    private void OnSprintCanceled()
+    {
         float baseSpeed = stateMachine.PlayerController.Data.MovementData.BaseSpeed;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed > baseSpeed)
         {
-            stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = baseSpeed * 2;
-            return;
+            stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = baseSpeed;
         }
 
-        stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = baseSpeed;
     }
+
 }

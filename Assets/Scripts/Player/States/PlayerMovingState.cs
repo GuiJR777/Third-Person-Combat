@@ -56,8 +56,9 @@ public class PlayerMovingState : PlayerBaseState
         float targetRotationYAngle = Rotate(movementDirection);
         Vector3 targetRotationDirection = GetTargetRotationDirection(targetRotationYAngle);
         float movementSpeed = stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed;
+        float slopeSpeedModifier = stateMachine.PlayerController.Data.ReusableData.currentSlopeModifier;
         Vector3 currentPlayerHorizontalVelocity = GetPlayerHorizontalVelocity();
-        Vector3 desiredForce = targetRotationDirection * movementSpeed - currentPlayerHorizontalVelocity;
+        Vector3 desiredForce = targetRotationDirection * movementSpeed * slopeSpeedModifier - currentPlayerHorizontalVelocity;
 
         stateMachine.PlayerController.Body.AddForce(desiredForce, ForceMode.VelocityChange);
     }
