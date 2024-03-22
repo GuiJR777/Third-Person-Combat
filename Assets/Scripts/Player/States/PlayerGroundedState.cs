@@ -4,7 +4,7 @@ public class PlayerGroundedState : PlayerMovingState
 {
     private SlopeData slopeData;
 
-    public PlayerGroundedState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
+    public PlayerGroundedState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
         slopeData = stateMachine.PlayerController.capsuleColliderHandler.slopeData;
     }
@@ -70,9 +70,8 @@ public class PlayerGroundedState : PlayerMovingState
 
     private void OnDrawOrSheatKatana()
     {
-        bool isKatanaDrawn = stateMachine.PlayerController.Data.ReusableData.isKatanaDrawn;
-        stateMachine.PlayerController.Data.ReusableData.isKatanaDrawn = !isKatanaDrawn;
-        stateMachine.PlayerController.Animator.SetBool("IsKatanaDrawn", !isKatanaDrawn);
+        bool isKatanaDrawn = stateMachine.PlayerController.Data.AnimationData.IsKatanaDrawn;
+        stateMachine.PlayerController.Data.AnimationData.SetIsKatanaDrawn(!isKatanaDrawn);
     }
 
 

@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class FreeLookMoveState : FreeLookState
 {
-    private readonly int SpeedVariableHash = Animator.StringToHash("FreeLookMoveSpeed");
-    public FreeLookMoveState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
+    public FreeLookMoveState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
+        stateMachine.PlayerController.Data.AnimationData.SetIsMoving(true);
         stateMachine.PlayerController.InputReader.Sprint += OnSprint;
         stateMachine.PlayerController.InputReader.SprintCanceled += OnSprintCanceled;
     }
@@ -20,12 +20,13 @@ public class FreeLookMoveState : FreeLookState
         base.PhysicsTick(fixedDeltaTime);
 
         Move();
-        stateMachine.PlayerController.Animator.SetFloat(SpeedVariableHash, GetMovementSpeed());
+        stateMachine.PlayerController.Data.AnimationData.SetMovementSpeed(GetMovementSpeed());
     }
 
     public override void Exit()
     {
         base.Exit();
+        stateMachine.PlayerController.Data.AnimationData.SetIsMoving(false);
         stateMachine.PlayerController.InputReader.Sprint -= OnSprint;
         stateMachine.PlayerController.InputReader.SprintCanceled -= OnSprintCanceled;
     }

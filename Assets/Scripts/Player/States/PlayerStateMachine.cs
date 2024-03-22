@@ -19,11 +19,11 @@ public class PlayerStateMachine : StateMachine
 
     public void Awake()
    {
-      freeLookState = new FreeLookState("FreeLookState", this);
-      targetLockState = new TargetLockState("TargetLockState", this);
-      freeLookIdleState = new FreeLookIdleState("FreeLookIdle", this);
-      freeLookMoveState = new FreeLookMoveState("FreeLookMove", this);
-      targetLockIdleState = new TargetLockIdleState("TargetLockIdle", this);
+      freeLookState = new FreeLookState(this);
+      targetLockState = new TargetLockState(this);
+      freeLookIdleState = new FreeLookIdleState(this);
+      freeLookMoveState = new FreeLookMoveState(this);
+      targetLockIdleState = new TargetLockIdleState(this);
    }
 
    public void Start()

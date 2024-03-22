@@ -1,6 +1,6 @@
 public class TargetLockIdleState : TargetLockState
 {
-    public TargetLockIdleState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
+    public TargetLockIdleState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 

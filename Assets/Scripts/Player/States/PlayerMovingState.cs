@@ -5,13 +5,12 @@ using UnityEngine;
 public class PlayerMovingState : PlayerBaseState
 {
 
-    public PlayerMovingState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
+    public PlayerMovingState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
     public override void Enter()
     {
-        StartAnimation();
         SetBaseSpeed();
         SetBaseRotationData();
     }
@@ -21,24 +20,9 @@ public class PlayerMovingState : PlayerBaseState
         GetMovementInput();
     }
 
-    public override void PhysicsTick(float fixedDeltaTime)
-    {
-    }
+    public override void PhysicsTick(float fixedDeltaTime){}
 
-    public override void Exit()
-    {
-        FinishAnimation();
-    }
-
-    private void StartAnimation()
-    {
-        stateMachine.PlayerController.Animator.SetBool(Name, true);
-    }
-
-    private void FinishAnimation()
-    {
-        stateMachine.PlayerController.Animator.SetBool(Name, false);
-    }
+    public override void Exit(){}
 
     protected void GetMovementInput()
     {

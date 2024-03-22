@@ -63,28 +63,28 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -3801130126640515209}
-    m_Position: {x: 190, y: 100, z: 0}
+    m_Position: {x: 60, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2954778684301161808}
-    m_Position: {x: 170, y: 260, z: 0}
+    m_Position: {x: 370, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6660601178048578729}
-    m_Position: {x: 100, y: 190, z: 0}
+    m_Position: {x: -60, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 478423717481509205}
-    m_Position: {x: 530, y: 190, z: 0}
+    m_Position: {x: 160, y: 260, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3139552866585412304}
-    m_Position: {x: 320, y: -10, z: 0}
+    m_Position: {x: 60, y: -30, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7545905659359813162}
-    m_Position: {x: 170, y: 380, z: 0}
+    m_Position: {x: 370, y: -20, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -150, y: -70, z: 0}
+  m_AnyStatePosition: {x: -210, y: -70, z: 0}
   m_EntryPosition: {x: -200, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -98,7 +98,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: FreeLookMove
+    m_ConditionEvent: IsMoving
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2954778684301161808}
@@ -181,7 +181,10 @@ AnimatorStateTransition:
     m_ConditionEvent: IsKatanaDrawn
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: FreeLookMove
+    m_ConditionEvent: IsMoving
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsLockOnTarget
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7545905659359813162}
@@ -253,7 +256,13 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: FreeLookMove
+    m_ConditionEvent: IsMoving
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsLockOnTarget
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsKatanaDrawn
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3139552866585412304}
@@ -284,31 +293,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: FreeLookIdle
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 1
-    m_Controller: {fileID: 0}
-  - m_Name: FreeLookMove
+  - m_Name: IsMoving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: TargetLockIdle
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: FreeLookState
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: TargetLockState
+  - m_Name: IsLockOnTarget
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -571,7 +562,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: FreeLookMove
+    m_ConditionEvent: IsMoving
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3801130126640515209}

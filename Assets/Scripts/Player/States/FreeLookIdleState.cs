@@ -1,6 +1,6 @@
 public class FreeLookIdleState : FreeLookState
 {
-    public FreeLookIdleState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
+    public FreeLookIdleState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 

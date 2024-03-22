@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Data.AnimationData.SetAnimator(Animator);
         stateMachine.Start();
     }
 

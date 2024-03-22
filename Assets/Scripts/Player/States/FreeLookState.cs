@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FreeLookState : PlayerGroundedState
 {
-    public FreeLookState(string stateName, PlayerStateMachine stateMachine) : base(stateName, stateMachine)
+    public FreeLookState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
     }
 
@@ -11,7 +11,6 @@ public class FreeLookState : PlayerGroundedState
     {
         base.Enter();
         stateMachine.PlayerController.InputReader.LockOnTarget += OnLockTarget;
-        stateMachine.PlayerController.InputReader.CancelLockTarget += OnCancelTarget;
     }
 
     public override void Tick(float deltaTime)
@@ -24,7 +23,6 @@ public class FreeLookState : PlayerGroundedState
     {
         base.Exit();
         stateMachine.PlayerController.InputReader.LockOnTarget -= OnLockTarget;
-        stateMachine.PlayerController.InputReader.CancelLockTarget -= OnCancelTarget;
     }
 
     private void StatesHandler()
@@ -43,12 +41,7 @@ public class FreeLookState : PlayerGroundedState
     private void OnLockTarget()
     {
         // TODO: Check if is target available
-        stateMachine.PlayerController.Data.ReusableData.isLockOnTarget = true;
+        // TODO: Change to TargetLockState
     }
 
-    private void OnCancelTarget()
-    {
-        // TODO: This method is called automatic if target out of range
-        stateMachine.PlayerController.Data.ReusableData.isLockOnTarget = false;
-    }
 }
