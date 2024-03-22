@@ -1556,6 +1556,100 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5334002542172103051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2890772196783475927}
+  - component: {fileID: 1450689007551780125}
+  - component: {fileID: 946740737757620494}
+  - component: {fileID: 8083615196037077928}
+  m_Layer: 0
+  m_Name: Targeter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2890772196783475927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334002542172103051}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7930758671618217417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450689007551780125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334002542172103051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da20e9616d9ec4e60ab1ad8d383a2338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &946740737757620494
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334002542172103051}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8083615196037077928
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5334002542172103051}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5390596727050027726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1936,7 @@ Transform:
   - {fileID: 3364923876255978763}
   - {fileID: 6265475276423532920}
   - {fileID: 5820576735473747203}
+  - {fileID: 2890772196783475927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &630223885240916961
@@ -1905,6 +2000,7 @@ MonoBehaviour:
     <groundLayer>k__BackingField:
       serializedVersion: 2
       m_Bits: 64
+  FeetGrounder: {fileID: 0}
   Animator: {fileID: 0}
   Body: {fileID: 6611208287656790743}
 --- !u!114 &7718938686967525415
@@ -1921,7 +2017,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   katanaInHand: {fileID: 1609676572793805669}
   katanaOnSheath: {fileID: 8985877547188150320}
-  sheath: {fileID: 2334997474808558691}
 --- !u!54 &6611208287656790743
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3149,12 +3244,6 @@ PrefabInstance:
 --- !u!4 &1613370264695880804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 518563880974596303, guid: 4d5d3983f0f264b04bdbc446f747a3b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1247946449156998315}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2334997474808558691 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3546034383768219848, guid: 4d5d3983f0f264b04bdbc446f747a3b5,
     type: 3}
   m_PrefabInstance: {fileID: 1247946449156998315}
   m_PrefabAsset: {fileID: 0}

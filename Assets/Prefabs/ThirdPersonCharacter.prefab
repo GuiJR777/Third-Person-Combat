@@ -546,7 +546,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8213880065176095182}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.045232695, y: 0.000000001698654, z: -7.691342e-11, w: 0.99897647}
+  m_LocalRotation: {x: 0.045232695, y: -0.000000002148596, z: 9.7286366e-11, w: 0.99897647}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -658,7 +658,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8853607914333890620}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00891507, y: -0.00000001720891, z: 1.5342476e-10, w: 0.9999603}
+  m_LocalRotation: {x: 0.00891507, y: 0.000000017210734, z: -1.5344104e-10, w: 0.9999603}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2254,7 +2254,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5628765099596035290, guid: e4f17d13d2b584625a4640f4601b33a8,
+        type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 2948805070088203948}
   m_SourcePrefab: {fileID: 100100000, guid: e4f17d13d2b584625a4640f4601b33a8, type: 3}
 --- !u!4 &6664454398874249415 stripped
 Transform:
@@ -2268,3 +2272,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3635340624075914510}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8966164383329602004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5628765099596035290, guid: e4f17d13d2b584625a4640f4601b33a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3635340624075914510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2948805070088203948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966164383329602004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638124079d4d54cf08e124f0bdfcc2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableFeetIk: 1
+  heightFromGroundRaycast: 1.14
+  raycastDownDistance: 1.5
+  enviromentLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  pelvisOffset: 0
+  pelvisUpAndDownSpeed: 0.28
+  feetToIkPositionSpeed: 0.2
+  leftFootAnimVariableName: LeftFootCurve
+  rightFootAnimVariableName: RightFootCurve
+  useProIkFeature: 0
+  showSolverDebug: 1

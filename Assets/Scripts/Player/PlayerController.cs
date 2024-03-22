@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public PlayerLayerData layerData { get; private set; }
 
     private PlayerStateMachine stateMachine;
+    public FeetGrounder FeetGrounder;
 
     public Animator Animator;
     public Transform cameraTransform { get; private set; }
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         cameraTransform = Camera.main.transform;
         Animator = GetComponent<Animator>();
+        FeetGrounder = GetComponent<FeetGrounder>();
         stateMachine = new PlayerStateMachine(this);
         stateMachine.Awake();
         capsuleColliderHandler.Initialize(gameObject);
