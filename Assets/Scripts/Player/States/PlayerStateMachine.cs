@@ -11,6 +11,7 @@ public class PlayerStateMachine : StateMachine
    public PlayerBaseState freeLookIdleState;
    public PlayerBaseState freeLookMoveState;
    public PlayerBaseState targetLockIdleState;
+   public PlayerBaseState targetLockMoveState;
 
     public PlayerStateMachine(PlayerController playerController)
     {
@@ -24,6 +25,7 @@ public class PlayerStateMachine : StateMachine
       freeLookIdleState = new FreeLookIdleState(this);
       freeLookMoveState = new FreeLookMoveState(this);
       targetLockIdleState = new TargetLockIdleState(this);
+      targetLockMoveState = new TargetLockMoveState(this);
    }
 
    public void Start()

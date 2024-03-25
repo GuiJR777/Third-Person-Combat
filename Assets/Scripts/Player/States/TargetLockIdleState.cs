@@ -8,6 +8,8 @@ public class TargetLockIdleState : TargetLockState
     {
         base.PhysicsTick(fixedDeltaTime);
 
+        FaceTarget();
+
         if (stateMachine.PlayerController.Body.velocity.magnitude > 0.2)
         {
             DecelerateHorizontally();

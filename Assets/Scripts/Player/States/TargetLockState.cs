@@ -45,13 +45,25 @@ public class TargetLockState : PlayerGroundedState
 
         if (isMoving)
         {
-            // TODO: Change to targetLockMoveState
-            Debug.Log("Target Lock Move");
+            stateMachine.SwitchState(stateMachine.targetLockMoveState);
             return;
         }
 
-        // TODO: Change to targetLockIdleState
-        Debug.Log("Target Lock Idle");
+        stateMachine.SwitchState(stateMachine.targetLockIdleState);
+
+    }
+
+    protected void FaceTarget()
+    {
+        Target target = stateMachine.PlayerController.Targeter.currentTarget;
+
+        if (target == null) return;
+
+        Vector3 targetDirection = target.transform.position - stateMachine.PlayerController.transform.position;
+        targetDirection.y = 0;
+
+        stateMachine.PlayerController.transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+        UpdateTargetRotation(targetDirection, false);
 
     }
 
