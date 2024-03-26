@@ -9,8 +9,8 @@ public class TargetLockState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.PlayerController.Data.AnimationData.SetIsLockOnTarget(true);
         stateMachine.PlayerController.Data.AnimationData.SetIsKatanaDrawn(true);
+        stateMachine.PlayerController.Data.AnimationData.SetIsLockOnTarget(true);
         stateMachine.PlayerController.InputReader.CancelLockTarget += OnCancelTarget;
     }
 
@@ -67,7 +67,7 @@ public class TargetLockState : PlayerGroundedState
 
     }
 
-    private void OnCancelTarget()
+    protected void OnCancelTarget()
     {
         stateMachine.PlayerController.Targeter.Cancel();
         stateMachine.SwitchState(stateMachine.freeLookState);

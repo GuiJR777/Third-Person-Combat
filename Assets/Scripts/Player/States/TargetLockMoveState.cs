@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TargetLockMoveState : TargetLockState
@@ -14,7 +15,6 @@ public class TargetLockMoveState : TargetLockState
         stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = stateMachine.PlayerController.Data.MovementData.BaseSpeed * SpeedPercentInTargetLock;
         stateMachine.PlayerController.Data.AnimationData.SetIsMoving(true);
         stateMachine.PlayerController.InputReader.Sprint += OnSprint;
-        stateMachine.PlayerController.InputReader.SprintCanceled += OnSprintCanceled;
     }
 
 
@@ -31,17 +31,13 @@ public class TargetLockMoveState : TargetLockState
     {
         base.Exit();
         stateMachine.PlayerController.Data.AnimationData.SetIsMoving(false);
+        stateMachine.PlayerController.Data.ReusableData.currentMaxSpeed = stateMachine.PlayerController.Data.MovementData.BaseSpeed;
         stateMachine.PlayerController.InputReader.Sprint -= OnSprint;
-        stateMachine.PlayerController.InputReader.SprintCanceled -= OnSprintCanceled;
     }
 
     private void OnSprint()
     {
-
+        OnCancelTarget();
     }
 
-    private void OnSprintCanceled()
-    {
-
-    }
 }

@@ -49,8 +49,10 @@ public class PlayerMovingState : PlayerBaseState
 
     protected Vector3 GetMovementDirection(){
         Vector3 playerInputVector = Vector3.zero;
+
         playerInputVector.x = stateMachine.PlayerController.Data.ReusableData.movementInput.x;
         playerInputVector.z = stateMachine.PlayerController.Data.ReusableData.movementInput.y;
+
 
         return playerInputVector;
     }

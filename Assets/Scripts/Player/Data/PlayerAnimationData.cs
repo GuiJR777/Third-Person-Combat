@@ -47,14 +47,15 @@ public class PlayerAnimationData
     public void SetAnimator(Animator animator)
     {
         _animator = animator;
+        _isKatanaDrawn = false;
     }
 
     public void SetIsKatanaDrawn(bool value)
     {
         if (_isKatanaDrawn == value) return;
 
-        _isKatanaDrawn = value;
         _animator.SetBool(IsKatanaDrawnHash, value);
+        _isKatanaDrawn = value;
 
         if (value)
         {
@@ -88,5 +89,6 @@ public class PlayerAnimationData
         _animator.SetFloat(SpeedVariableInXHash, inputVector.x);
         _animator.SetFloat(SpeedVariableInYHash, inputVector.y);
     }
+
 }
 
