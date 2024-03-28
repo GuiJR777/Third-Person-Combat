@@ -29,7 +29,7 @@ public class TargetLockState : PlayerGroundedState
 
     private void StatesHandler()
     {
-        if (!stateMachine.PlayerController.Targeter.SelectTarget())
+        if (!stateMachine.PlayerController.Targeter.currentTarget)
         {
             OnCancelTarget();
             return;
