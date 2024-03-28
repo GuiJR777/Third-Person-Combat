@@ -195,4 +195,18 @@ public class PlayerMovingState : PlayerBaseState
     protected Vector3 GetPlayerVerticalVelocity(){
         return new Vector3(0f, stateMachine.PlayerController.Body.velocity.y, 0f);
     }
+
+    protected void FaceTarget()
+    {
+        Target target = stateMachine.PlayerController.Targeter.currentTarget;
+
+        if (target == null) return;
+
+        Vector3 targetDirection = target.transform.position - stateMachine.PlayerController.transform.position;
+        targetDirection.y = 0;
+
+        stateMachine.PlayerController.transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+        UpdateTargetRotation(targetDirection, false);
+
+    }
 }

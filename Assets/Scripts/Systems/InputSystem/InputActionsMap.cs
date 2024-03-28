@@ -98,6 +98,24 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf87cfd1-e0a6-4620-b0d6-452a0796f281"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""b443e384-b69d-46b6-9b09-2d8cfb9a1ce3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -364,6 +382,50 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
                     ""action"": ""DrawOrSheatKatana"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d68f381-50d8-430d-989c-25d246919feb"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb7c3f8b-567c-4b9c-bf48-42919499aaa6"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68c56627-aade-4aba-bb05-1ab730fc955c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a68f8b94-a8a9-4ed5-9c49-6c9df797c8b9"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -408,6 +470,8 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         m_Player_LockOnTarget = m_Player.FindAction("LockOnTarget", throwIfNotFound: true);
         m_Player_CancelLockTarget = m_Player.FindAction("CancelLockTarget", throwIfNotFound: true);
         m_Player_DrawOrSheatKatana = m_Player.FindAction("DrawOrSheatKatana", throwIfNotFound: true);
+        m_Player_LightAttack = m_Player.FindAction("LightAttack", throwIfNotFound: true);
+        m_Player_HeavyAttack = m_Player.FindAction("HeavyAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -477,6 +541,8 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LockOnTarget;
     private readonly InputAction m_Player_CancelLockTarget;
     private readonly InputAction m_Player_DrawOrSheatKatana;
+    private readonly InputAction m_Player_LightAttack;
+    private readonly InputAction m_Player_HeavyAttack;
     public struct PlayerActions
     {
         private @InputActionsMap m_Wrapper;
@@ -489,6 +555,8 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         public InputAction @LockOnTarget => m_Wrapper.m_Player_LockOnTarget;
         public InputAction @CancelLockTarget => m_Wrapper.m_Player_CancelLockTarget;
         public InputAction @DrawOrSheatKatana => m_Wrapper.m_Player_DrawOrSheatKatana;
+        public InputAction @LightAttack => m_Wrapper.m_Player_LightAttack;
+        public InputAction @HeavyAttack => m_Wrapper.m_Player_HeavyAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -522,6 +590,12 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
             @DrawOrSheatKatana.started += instance.OnDrawOrSheatKatana;
             @DrawOrSheatKatana.performed += instance.OnDrawOrSheatKatana;
             @DrawOrSheatKatana.canceled += instance.OnDrawOrSheatKatana;
+            @LightAttack.started += instance.OnLightAttack;
+            @LightAttack.performed += instance.OnLightAttack;
+            @LightAttack.canceled += instance.OnLightAttack;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -550,6 +624,12 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
             @DrawOrSheatKatana.started -= instance.OnDrawOrSheatKatana;
             @DrawOrSheatKatana.performed -= instance.OnDrawOrSheatKatana;
             @DrawOrSheatKatana.canceled -= instance.OnDrawOrSheatKatana;
+            @LightAttack.started -= instance.OnLightAttack;
+            @LightAttack.performed -= instance.OnLightAttack;
+            @LightAttack.canceled -= instance.OnLightAttack;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -595,5 +675,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         void OnLockOnTarget(InputAction.CallbackContext context);
         void OnCancelLockTarget(InputAction.CallbackContext context);
         void OnDrawOrSheatKatana(InputAction.CallbackContext context);
+        void OnLightAttack(InputAction.CallbackContext context);
+        void OnHeavyAttack(InputAction.CallbackContext context);
     }
 }

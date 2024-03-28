@@ -29,6 +29,12 @@ public class TargetLockState : PlayerGroundedState
 
     private void StatesHandler()
     {
+        if (stateMachine.PlayerController.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackState(stateMachine, 0));
+            return;
+        }
+
         if (!stateMachine.PlayerController.Targeter.currentTarget)
         {
             OnCancelTarget();
@@ -50,20 +56,6 @@ public class TargetLockState : PlayerGroundedState
         }
 
         stateMachine.SwitchState(stateMachine.targetLockIdleState);
-
-    }
-
-    protected void FaceTarget()
-    {
-        Target target = stateMachine.PlayerController.Targeter.currentTarget;
-
-        if (target == null) return;
-
-        Vector3 targetDirection = target.transform.position - stateMachine.PlayerController.transform.position;
-        targetDirection.y = 0;
-
-        stateMachine.PlayerController.transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.up);
-        UpdateTargetRotation(targetDirection, false);
 
     }
 

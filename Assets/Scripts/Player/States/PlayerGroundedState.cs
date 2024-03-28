@@ -15,6 +15,7 @@ public class PlayerGroundedState : PlayerMovingState
         stateMachine.PlayerController.InputReader.DrawOrSheat += OnDrawOrSheatKatana;
     }
 
+
     public override void PhysicsTick(float fixedDeltaTime)
     {
         base.PhysicsTick(fixedDeltaTime);

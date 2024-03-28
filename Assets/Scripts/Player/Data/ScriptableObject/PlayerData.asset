@@ -76,3 +76,28 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+  lightAttacks:
+  - <AnimationName>k__BackingField: LightAttack1
+    <TransitionDuration>k__BackingField: 0.2
+    <ComboStateIndex>k__BackingField: 1
+    <ComboAttackTime>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0
+    <Force>k__BackingField: 0
+  - <AnimationName>k__BackingField: LightAttack2
+    <TransitionDuration>k__BackingField: 0.2
+    <ComboStateIndex>k__BackingField: 2
+    <ComboAttackTime>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0.8
+    <Force>k__BackingField: 5
+  - <AnimationName>k__BackingField: LightAttack3
+    <TransitionDuration>k__BackingField: 0.2
+    <ComboStateIndex>k__BackingField: 3
+    <ComboAttackTime>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0.1
+    <Force>k__BackingField: 15
+  - <AnimationName>k__BackingField: LightAttack4
+    <TransitionDuration>k__BackingField: 0.2
+    <ComboStateIndex>k__BackingField: -1
+    <ComboAttackTime>k__BackingField: 0.5
+    <ForceTime>k__BackingField: 0.1
+    <Force>k__BackingField: 20

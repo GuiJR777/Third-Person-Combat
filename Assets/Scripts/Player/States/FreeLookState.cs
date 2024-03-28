@@ -27,6 +27,12 @@ public class FreeLookState : PlayerGroundedState
 
     private void StatesHandler()
     {
+        if (stateMachine.PlayerController.InputReader.IsAttacking)
+        {
+            stateMachine.SwitchState(new PlayerAttackState(stateMachine, 0));
+            return;
+        }
+
         bool isMoving = stateMachine.PlayerController.InputReader.MovementValue != Vector2.zero;
 
         if (isMoving)
