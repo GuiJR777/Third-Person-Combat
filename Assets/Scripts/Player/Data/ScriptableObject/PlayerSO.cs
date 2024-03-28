@@ -7,5 +7,6 @@ using UnityEngine;
         [field: SerializeField] public PlayerMovementData MovementData { get; private set; }
         [field: SerializeField] public PlayerReusableData ReusableData { get; private set; }
         [field: SerializeField] public PlayerAnimationData AnimationData {get; private set;}
+        [field: SerializeField] public StatisticsData StatisticsData {get; private set;}
         [field: SerializeField] public List<Attack> lightAttacks;
     }

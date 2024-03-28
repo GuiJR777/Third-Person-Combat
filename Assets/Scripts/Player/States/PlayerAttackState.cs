@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerAttackState : PlayerMovingState
@@ -23,6 +20,9 @@ public class PlayerAttackState : PlayerMovingState
         }
 
         stateMachine.PlayerController.Animator.CrossFadeInFixedTime(attack.AnimationName, attack.TransitionDuration);
+        float calculatedDamage = stateMachine.PlayerController.Data.StatisticsData.Damage * attack.PercentAttack;
+
+        stateMachine.PlayerController.hitBox.SetDamage((int)Math.Ceiling(calculatedDamage));
     }
 
     public override void Exit()
@@ -103,7 +103,8 @@ public class PlayerAttackState : PlayerMovingState
 
     private void TryApplyForce()
     {
-        stateMachine.PlayerController.Body.AddForce(stateMachine.PlayerController.transform.forward * attack.Force, ForceMode.Impulse);
+        Vector3 force = stateMachine.PlayerController.transform.forward * attack.Force;
+        stateMachine.PlayerController.Body.AddForce(new Vector3(force.x, 0, force.z), ForceMode.Impulse);
         isForceApplied = true;
     }
 
